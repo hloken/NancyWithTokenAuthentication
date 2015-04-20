@@ -1,6 +1,6 @@
 ﻿using Nancy;
 
-namespace Web
+namespace NancyWithTokenAuthentication.Web
 {
     public class IndexModule : NancyModule
     {

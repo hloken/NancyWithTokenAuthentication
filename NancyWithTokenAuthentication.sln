@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NancyWithTokenAuthenticatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NancyWithTokenAuthentication.Web", "NancyWithTokenAuthentication.Web\NancyWithTokenAuthentication.Web.csproj", "{EC8D8E10-673D-44F4-BE3E-4A462B299B10}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NancyWithTokenAuthentication.Tests", "NancyWithTokenAuthentication.Tests\NancyWithTokenAuthentication.Tests.csproj", "{AEC17A87-DC84-4AA0-B785-841F71FFCAD8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{EC8D8E10-673D-44F4-BE3E-4A462B299B10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC8D8E10-673D-44F4-BE3E-4A462B299B10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC8D8E10-673D-44F4-BE3E-4A462B299B10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEC17A87-DC84-4AA0-B785-841F71FFCAD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEC17A87-DC84-4AA0-B785-841F71FFCAD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEC17A87-DC84-4AA0-B785-841F71FFCAD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEC17A87-DC84-4AA0-B785-841F71FFCAD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

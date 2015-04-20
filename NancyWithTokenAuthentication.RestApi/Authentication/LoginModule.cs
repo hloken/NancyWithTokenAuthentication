@@ -1,6 +1,6 @@
 using Nancy;
 
-namespace NancyWithTokenAuthentication.Authentication
+namespace NancyWithTokenAuthentication.RestApi.Authentication
 {
     public class LoginModule : NancyModule
     {
