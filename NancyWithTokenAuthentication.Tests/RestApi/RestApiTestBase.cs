@@ -1,5 +1,5 @@
 ﻿using Nancy.Testing;
-using NancyWithTokenAuthentication.RestApi.Bootstrapping;
+using NancyWithTokenAuthentication.RestApi.Bootstrap;
 using NancyWithTokenAuthentication.Tests.Bdd;
 using NUnit.Framework;
 

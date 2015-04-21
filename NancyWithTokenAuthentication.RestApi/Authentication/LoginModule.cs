@@ -7,7 +7,7 @@ namespace NancyWithTokenAuthentication.RestApi.Authentication
         public LoginModule() : 
             base("api/login")
         {
-
+            //Post["/loginUser"] =>  
         }
     }
 }

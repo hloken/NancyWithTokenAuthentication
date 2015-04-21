@@ -1,20 +1,18 @@
 ﻿using System;
-using Nancy.Hosting.Self;
+using Microsoft.Owin.Hosting;
+using NancyWithTokenAuthentication.RestApi.Bootstrap;
 
-namespace NancyConsoleHost
+namespace NancyWithTokenAuthentication.RestApi.ConsoleHost
 {
     class Program
     {
         static void Main(string[] args)
         {
-            var uri =
-                new Uri("http://localhost:8080");
+            const string restApiUrl = "http://localhost:8080";
 
-            using (var host = new NancyHost(uri))
+            using (WebApp.Start<Startup>(restApiUrl))
             {
-                host.Start();
-
-                Console.WriteLine("Your application is running on " + uri);
+                Console.WriteLine("The rest API is running on " + restApiUrl);
                 Console.WriteLine("Press any [Enter] to close the host.");
                 Console.ReadLine();
             }

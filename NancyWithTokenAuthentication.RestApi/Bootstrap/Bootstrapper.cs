@@ -1,6 +1,6 @@
 ﻿using Nancy;
 
-namespace NancyWithTokenAuthentication.RestApi.Bootstrapping
+namespace NancyWithTokenAuthentication.RestApi.Bootstrap
 {
     public class Bootstrapper : DefaultNancyBootstrapper
     {
