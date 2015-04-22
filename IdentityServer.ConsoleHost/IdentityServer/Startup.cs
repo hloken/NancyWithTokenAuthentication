@@ -1,4 +1,5 @@
 ﻿using Owin;
+using Thinktecture.IdentityServer.Core.Configuration;
 
 namespace IdentityServer.ConsoleHost.IdentityServer
 {
@@ -6,8 +7,19 @@ namespace IdentityServer.ConsoleHost.IdentityServer
     {
         public void Configuration(IAppBuilder app)
         {
-            app.UseIdentityServer(IdentityServerSettings.GetIdentityServerOptions());
+            var factory = InMemoryFactory.Create(
+                scopes: Scopes.Get(),
+                clients: Clients.Get(),
+                users: Users.Get()
+                );
 
+            var options = new IdentityServerOptions
+            {
+                Factory = factory,
+                RequireSsl = false
+            };
+
+            app.UseIdentityServer(options);
             app.UseNancy();
         } 
     }
