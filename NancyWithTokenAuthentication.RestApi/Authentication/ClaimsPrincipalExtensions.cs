@@ -9,11 +9,10 @@ namespace NancyWithTokenAuthentication.RestApi.Authentication
     {
         public static Guid CurrentUserId(this ClaimsPrincipal principal)
         {
-            var subject = principal.Claims.GetClaimValue("sub");
+            var subject = principal.Claims.GetClaimValue("sub") ?? string.Empty;
             Guid userId;
 
-            if (!Guid.TryParse(subject, out userId))
-                throw new ApplicationException(String.Format("Invalid userid {0}", subject));
+            Guid.TryParse(subject, out userId);
 
             return userId;
         }

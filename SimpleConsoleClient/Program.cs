@@ -28,6 +28,8 @@ namespace SimpleConsoleClient
             client.SetBearerToken(response.AccessToken);
 
             Console.WriteLine(client.GetStringAsync("http://localhost:8080/api/secure/helloworld").Result);
+
+            Console.WriteLine("\r\nAny key to exit\r\n");
             Console.ReadKey();
         }
 

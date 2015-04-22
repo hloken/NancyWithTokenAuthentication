@@ -1,6 +1,4 @@
-﻿using System.Dynamic;
-using System.Linq;
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using System.Text;
 using Nancy;
 using Nancy.Security;
@@ -19,9 +17,7 @@ namespace NancyWithTokenAuthentication.RestApi.SecureApi
             {
                 var currentUser = Context.GetMSOwinUser();
 
-
                 return CreatePrincipalString(currentUser);
-                
             };
         }
 
@@ -30,14 +26,14 @@ namespace NancyWithTokenAuthentication.RestApi.SecureApi
             var sb = new StringBuilder();
 
             sb.AppendFormat("userId: {0}\n", currentUser.CurrentUserId());
-            sb.AppendLine("Claims");
+            sb.AppendLine("Claims\n");
 
             foreach (var claim in currentUser.Claims)
             {
-                sb.AppendLine(claim.ToString());
+                sb.AppendFormat("Claim: {0}\r\n", claim.ToString());
             }
 
-            throw new System.NotImplementedException();
+            return sb.ToString();
         }
     }
 }
