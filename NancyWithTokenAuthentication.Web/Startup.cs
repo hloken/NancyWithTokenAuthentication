@@ -7,7 +7,7 @@ using Owin;
 
 namespace NancyWithTokenAuthentication.Web
 {
-    [assembly: OwinStartup(typeof(NancyWithTokenAuthentication.Web.Startup))]
+    [assembly: OwinStartup(typeof(Startup))]
     public class Startup
     {
         public void Configuration(IAppBuilder app)
