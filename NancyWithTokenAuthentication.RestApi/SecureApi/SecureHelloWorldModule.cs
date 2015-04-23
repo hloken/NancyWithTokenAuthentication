@@ -17,15 +17,30 @@ namespace NancyWithTokenAuthentication.RestApi.SecureApi
             {
                 var currentUser = Context.GetMSOwinUser();
 
-                return CreatePrincipalString(currentUser);
+                var subjectClaim = currentUser.FindFirst("sub");
+
+                string message;
+                if (subjectClaim != null)
+                {
+                    message = string.Format(@"Caller is user: {0}\r\n{1}\r\n", currentUser.CurrentUserId(), CreatePrincipalString(currentUser));
+                }
+                else
+                {
+                    message = string.Format("Caller is computer\r\n{0}", CreatePrincipalString(currentUser));
+                }
+
+                return Negotiate
+                    .WithModel(message)
+                    .WithStatusCode(HttpStatusCode.OK);
             };
+
         }
 
         private string CreatePrincipalString(ClaimsPrincipal currentUser)
         {
             var sb = new StringBuilder();
 
-            sb.AppendFormat("userId: {0}\n", currentUser.CurrentUserId());
+            sb.AppendFormat("client_id: {0}\r\n", currentUser.FindFirst("client_id"));
             sb.AppendLine("Claims\n");
 
             foreach (var claim in currentUser.Claims)
