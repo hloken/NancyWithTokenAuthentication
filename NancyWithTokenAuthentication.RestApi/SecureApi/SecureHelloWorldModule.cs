@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
 using System.Text;
 using Nancy;
+using Nancy.Routing;
 using Nancy.Security;
 using NancyWithTokenAuthentication.RestApi.Authentication;
 
@@ -22,30 +23,27 @@ namespace NancyWithTokenAuthentication.RestApi.SecureApi
                 string message;
                 if (subjectClaim != null)
                 {
-                    message = string.Format(@"Caller is user: {0}\r\n{1}\r\n", currentUser.CurrentUserId(), CreatePrincipalString(currentUser));
+                    message = string.Format("Caller is user: {0}\r\n{1}\r\n", currentUser.CurrentUserId(), CreatePrincipalString(currentUser));
                 }
                 else
                 {
                     message = string.Format("Caller is computer\r\n{0}", CreatePrincipalString(currentUser));
                 }
 
-                return Negotiate
-                    .WithModel(message)
-                    .WithStatusCode(HttpStatusCode.OK);
+                return message;
             };
-
         }
 
         private string CreatePrincipalString(ClaimsPrincipal currentUser)
         {
             var sb = new StringBuilder();
 
-            sb.AppendFormat("client_id: {0}\r\n", currentUser.FindFirst("client_id"));
-            sb.AppendLine("Claims\n");
+            sb.AppendFormat("{0}\r\n", currentUser.FindFirst("client_id"));
+            sb.AppendLine("Claims");
 
             foreach (var claim in currentUser.Claims)
             {
-                sb.AppendFormat("Claim: {0}\r\n", claim.ToString());
+                sb.AppendFormat("Claim: {0}\r\n", claim);
             }
 
             return sb.ToString();

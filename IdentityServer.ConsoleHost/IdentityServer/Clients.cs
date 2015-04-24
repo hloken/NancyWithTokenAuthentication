@@ -16,7 +16,6 @@ namespace IdentityServer.ConsoleHost.IdentityServer
                     ClientId = "silicon",
                     Enabled = true,
                     AccessTokenType = AccessTokenType.Reference,
-
                     Flow = Flows.ClientCredentials,
                     ClientSecrets = new List<ClientSecret>
                     {

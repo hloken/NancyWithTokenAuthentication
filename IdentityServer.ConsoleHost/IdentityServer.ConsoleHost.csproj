@@ -86,7 +86,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IdentityServer\Clients.cs" />
-    <Compile Include="IdentityServer\IdentityServerSettings.cs" />
     <Compile Include="IdentityServer\Scopes.cs" />
     <Compile Include="IdentityServer\Startup.cs" />
     <Compile Include="IdentityServer\Users.cs" />

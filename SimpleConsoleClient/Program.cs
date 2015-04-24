@@ -8,21 +8,37 @@ namespace SimpleConsoleClient
     {
         static void Main(string[] args)
         {
-            var machineTokenResponse = GetMachineToken();
             Console.WriteLine("Calling RestAPI with machine client token");
-            var client = new HttpClient();
-            client.SetBearerToken(machineTokenResponse.AccessToken);
-            var stringAsync = client.GetStringAsync("http://localhost:8080/api/secure/helloworld").Result;
-            Console.WriteLine(stringAsync);
+            var returnedString = CallRestApiUsingMachineClientToken();
+            Console.WriteLine(returnedString);
 
-            var userTokenResponse = GetUserToken();
+            Console.WriteLine("\r\nAny key to continue\r\n");
+            Console.ReadKey();
+
             Console.WriteLine("Calling RestAPI with user client token");
-            var client2 = new HttpClient();
-            client2.SetBearerToken(userTokenResponse.AccessToken);
-            Console.WriteLine(client2.GetStringAsync("http://localhost:8080/api/secure/helloworld").Result);
+            var returnedString2 = CallRestApiUsingUserToken();
+            Console.WriteLine(returnedString2);
             
             Console.WriteLine("\r\nAny key to exit\r\n");
             Console.ReadKey();
+        }
+
+        private static string CallRestApiUsingUserToken()
+        {
+            var userTokenResponse = GetUserToken();
+            var client = new HttpClient();
+            client.SetBearerToken(userTokenResponse.AccessToken);
+            var stringAsync = client.GetStringAsync("http://localhost:8080/api/secure/helloworld").Result;
+            return stringAsync;
+        }
+
+        private static string CallRestApiUsingMachineClientToken()
+        {
+            var machineTokenResponse = GetMachineToken();
+            var client = new HttpClient();
+            client.SetBearerToken(machineTokenResponse.AccessToken);
+            var stringAsync = client.GetStringAsync("http://localhost:8080/api/secure/helloworld").Result;
+            return stringAsync;
         }
 
         static TokenResponse GetMachineToken()
@@ -46,7 +62,7 @@ namespace SimpleConsoleClient
             Console.WriteLine("Requesting token as machine client");
 
             var client = new OAuth2Client(
-                new Uri("https://localhost:9091/connect/token"),
+                new Uri("http://localhost:9091/connect/token"),
                 "carbon",
                 "21B5F798-BE55-42BC-8AA8-0025B903DC3B");
 
