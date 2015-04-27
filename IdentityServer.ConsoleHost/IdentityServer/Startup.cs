@@ -7,20 +7,17 @@ namespace IdentityServer.ConsoleHost.IdentityServer
     {
         public void Configuration(IAppBuilder app)
         {
-            var factory = InMemoryFactory.Create(
-                scopes: Scopes.Get(),
-                clients: Clients.Get(),
-                users: Users.Get()
-                );
-
-            var options = new IdentityServerOptions
+            app.UseIdentityServer(new IdentityServerOptions
             {
-                Factory = factory,
-                RequireSsl = false
-            };
+                RequireSsl = false,
+                Factory = InMemoryFactory.Create(
+                    scopes: Scopes.Get(),
+                    clients: Clients.Get(),
+                    users: Users.Get()
+                    )
+            });
 
-            app.UseIdentityServer(options);
-            app.UseNancy();
+            //app.UseNancy();
         } 
     }
 }

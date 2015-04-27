@@ -8,6 +8,7 @@ namespace IdentityServer.ConsoleHost
         static void Main(string[] args)
         {
             const string identityServerUrl = "http://localhost:9091";
+
             using (WebApp.Start<IdentityServer.Startup>(identityServerUrl))
             {
                 Console.WriteLine("The IdentityServer3 is running on " + identityServerUrl);

@@ -34,6 +34,19 @@ namespace IdentityServer.ConsoleHost.IdentityServer
                     {
                         new ClientSecret("21B5F798-BE55-42BC-8AA8-0025B903DC3B".Sha256())
                     }
+                },
+
+                new Client
+                {
+                    Enabled = true,
+                    ClientName = "MVC Client",
+                    ClientId = "mvc",
+                    Flow = Flows.Implicit,
+
+                    RedirectUris = new List<string>
+                    {
+                        "http://localhost/NancyWithTokenAuthentication.Web"
+                    }
                 }
             };
         }

@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Security.Claims;
+using Thinktecture.IdentityServer.Core;
 using Thinktecture.IdentityServer.Core.Services.InMemory;
 
 namespace IdentityServer.ConsoleHost.IdentityServer
@@ -13,7 +15,13 @@ namespace IdentityServer.ConsoleHost.IdentityServer
                 {
                     Username = "bob",
                     Password = "secret",
-                    Subject = "1"
+                    Subject = "1",
+
+                    Claims = new[]
+                    {
+                        new Claim(Constants.ClaimTypes.GivenName, "Bob"), 
+                        new Claim(Constants.ClaimTypes.FamilyName, "Smith"), 
+                    }
                 },
                 new InMemoryUser
                 {
